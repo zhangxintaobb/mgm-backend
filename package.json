@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./src/bin/www"
+    "start": "tsc --incremental && cp -r src/public dist && (PATH=$(npm bin):$PATH; eval madge --circular ./dist/app.js) && echo \"TMBACKEND_REALSE_DATE=$(date +'%Y-%m-%d')\" > ./dist/version.txt"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -12,6 +12,25 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-saml": "~1.3.3"
+  },
+  "devDependencies": {
+    "@types/passport": "^1.0.11",
+    "@types/prettier": "^2.4.3",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard-with-typescript": "^39.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "madge": "^6.0.0",
+    "prettier": "^1.19.1",
+    "typescript": "^5.2.2"
   }
 }
